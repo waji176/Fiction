@@ -55,7 +55,7 @@ def is_element_exist(driver, xpath):
 def Login(url):
     driver = webdriver.Chrome()
     driver.get("https://wordpress.com/log-in")
-    While_cmd(driver, """driver.find_element_by_xpath('''//input[@name="usernameOrEmail"]''').send_keys('yaox@vangox.com')""")
+    While_cmd(driver, """driver.find_element_by_xpath('''//input[@name="usernameOrEmail"]''').send_keys('邮箱@vangox.com')""")
     driver.find_element_by_xpath('''//button[@class="button form-button is-primary"]''').click()
     While_cmd(driver, """driver.find_element_by_xpath('''//input[@name="password"]''').send_keys('vangox123')""")
     driver.find_element_by_xpath('''//button[@class="button form-button is-primary"]''').click()

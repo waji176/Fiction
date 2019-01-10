@@ -74,42 +74,14 @@ WSGI_APPLICATION = 'Fiction.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'fiction',
-#         'USER': 'root',
-#         'PASSWORD': '1Ee156f68620ce89',
-#         'HOST': '121.201.7.63',
-#         'PORT': 33066,
-#
-#     }
-# }
-# DATABASES2 = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'fiction',
-#         'USER': 'jiang',
-#         'PASSWORD': 'jiangwenhui',
-#         'HOST': 'jwh.mysql.polardb.cnsh.rds.aliyuncs.com',
-#         'PORT': 3306,
-#
-#     }
-# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fiction',
-        'USER': 'jwh',
-        'PASSWORD': 'jiangwenhui',
-        'HOST': 'jwh.cvsx8eqaeyh0.ap-northeast-2.rds.amazonaws.com',
+        'NAME': '数据库名',
+        'USER': '用户',
+        'PASSWORD': '密码',
+        'HOST': 'ip',
         'PORT': 3306,
 
     }
