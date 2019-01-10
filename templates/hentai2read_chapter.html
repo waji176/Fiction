@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <h1 class="text-center">
+        {% for i in name %}
+            {% if forloop.first %}
+                {{ i.name }} <br>
+                <img src="/anti_theft_chain_img/?img={{ i.name.cover_image }}" alt="">
+            {% endif %}
+        {% endfor %}
+    </h1>
+
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr>
+
+            <th>作品名称</th>
+            <th>章节名</th>
+        </tr>
+        {% for i in name %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>
+                    <a target="_blank" href="/hentai2read/?chapter_id={{ i.id }}">{{ i.chapter_name }}</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

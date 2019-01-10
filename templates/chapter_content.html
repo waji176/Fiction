@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="background:#ffffed;">
+    {% for i in chapter_content %}
+        <h3 class="text-center">{{ i.fiction_name }}</h3>
+        <h4 class="text-center" style="margin: 20px 0">{{ i.chapter_name }}</h4>
+        <hr>
+        <div style="padding:0 15px; font-size: 16px; line-height: 36px;">
+        {% if not i.is_vip %}
+            {{ i.chapter_content |safe }}
+        {% else %}
+            <h4 class="text-center bg-danger">*********这是VIP章节**********</h4>
+        {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="row" style="margin: 15px 0">
+        <div class="col-md-6 col-xs-6" style="text-align: right;">
+            <a href="javascript:;"><img id="last" align="right"  class="img-responsive" title="last.png" alt="上一章.jpg" src="/static/img/last.png"/></a>
+        </div>
+
+        <div class="col-md-6 col-xs-6" style="text-align: left;">
+            <a href="javascript:;"><img id="next"class="img-responsive" title="next.png" alt="下一章.jpg" src="/static/img/next.png"/></a>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center; margin: 15px 0 10px 0">
+            <a id="back" href="javascript:;">返回目录>></a>
+        </div>
+    </div>
+    <script src="/static/js/jm.js"></script>
+<div style="margin:0 15px;">
+    <p style="padding: 0px; color: rgb(113, 97, 97); line-height: 2em; text-indent: 0em; font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: medium; margin-top: 0px; margin-bottom: 10px; white-space: normal; min-height: 1em; max-width: 100%; box-sizing: border-box !important; widows: 1;"><span style="color: rgb(0, 0, 0);"><strong style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;">更多精彩内容关注微信公众号</span></strong><strong style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px;"></span></strong></span></p><p style="padding: 0px; color: rgb(113, 97, 97); line-height: 2em; text-indent: 0em; font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: medium; margin-top: 0px; margin-bottom: 10px; white-space: normal; min-height: 1em; max-width: 100%; box-sizing: border-box !important; widows: 1;"><span style="color: rgb(0, 0, 0);"><strong style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px; color: rgb(217, 33, 66);">搜索微信公众号“女频言情”，关注后进入书城，继续阅读！</span></strong></span></p><p style="font-weight: bold; font-size: 18px; text-align: center; font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: pre-wrap;"><a href="weixin://dl/business/?ticket=nvpinyanqing" target="_self">点击进入微信公众号 >></a></p><p style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: normal;"><span style="font-size: 14px;"><br/></span></p><p style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: normal;"><strong style="margin: 0px; padding: 0px;"><span style="margin: 0px; padding: 0px; color: rgb(217, 33, 66);"></span></strong><span style="font-size: 14px;">如跳转失败请按下列方式关注公众号：<br style="margin: 0px; padding: 0px; color: rgb(102, 102, 102); line-height: 30px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Droid Sans Fallback&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 15.45px; widows: 1; background-color: rgb(255, 255, 255);"/>1、打开微信点击右上角“<span style="color: rgb(255, 0, 0);">&nbsp;+&nbsp;</span>”→“&nbsp;<span style="color: rgb(255, 0, 0);">添加朋友</span>&nbsp;”→“&nbsp;<span style="color: rgb(255, 0, 0);">公众号</span>&nbsp;”→输入“ <span style="color: rgb(255, 0, 0); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">女频言情</span>&nbsp;”→关注公众号<span style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">→进入书城</span><span style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;"></span></span></p><p style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: normal;"><span style="font-size: 14px;">2、点击关注“<span style="color: rgb(255, 0, 0); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">女频言情</span><span style="color: rgb(255, 0, 0); background-color: rgb(255, 255, 255);"></span>”后，<span style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">进入书城</span><span style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">，</span>即可继续阅读后续内容</span></p><p style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: normal;"><span style="font-size: 14px;">3、截图保存下方二维码，在微信打开识别关注“<span style="color: rgb(255, 0, 0); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;"><span style="color: rgb(255, 0, 0); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">女频言情</span></span>”，<span style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 14px;">进入书城</span>，即可继续阅读。</span></span></p><p style="font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; white-space: normal;"><span style="font-size: 14px;"><img title="女频言情.jpg" alt="女频言情.jpg" src="/static/img/gzh.jpg" width="250"/></span></p>
+</div>
+
+<hr>
+<h4 style="margin:30px 10px 10px 10px; font-size:14px; color:#333; font-weight:blod">免责声明：</h4>
+    <ul style="font-size:11px;">
+        <li>《爽文书院》为非赢利性站点。</li>
+        <li>《本站所有文学作品》均由书友上传且不做任何商业用途，仅为喜爱阅读的书友提供一个分享与交流的平台。</li>
+        <li>如果小说章节内容涉嫌色情、暴力等违法内容，或者是侵犯了作者的合法权益，请联系我们删除!</li>
+    </ul>
+
+    <h4 style=" margin:20px 10px 10px 10px; font-size:12px; color:#333; font-weight:blod;">Copyright ©2018  <a href="#">爽文书院</a></h4>
+</div>
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    var chapter_content_id = getQueryString("chapter_content_id");
+    var fiction_id = getQueryString("fiction_id");
+
+    if(chapter_content_id == null || chapter_content_id == ""){
+        chapter_content_id = 1;
+    }
+    if(fiction_id == null || fiction_id == ""){
+            fiction_id = 1;
+        }
+
+    var all_chapter_content_id = eval ("({{all_id}})");
+    var last_id = 1;
+    var next_id = 2;
+    for(var i=0; i<all_chapter_content_id.length; i++){
+        if(Number(chapter_content_id) == all_chapter_content_id[i]){
+            var index = i;
+            break;
+        }
+    }
+
+    var last_img = document.getElementById("last");
+    var next_img = document.getElementById("next");
+    var back_btn = document.getElementById("back");
+    back_btn.href = "/fiction/?fiction_id="+fiction_id;
+
+    var last_url = "/chapter_content/?chapter_content_id="+all_chapter_content_id[index-1]+"&fiction_id="+fiction_id;
+    var next_url = "/chapter_content/?chapter_content_id="+all_chapter_content_id[index+1]+"&fiction_id="+fiction_id;
+    if(index == 0){
+        //disable last
+        last_img.style.opacity = 0.3;
+        last_img.style.cursor = "not-allowed";
+        next_img.onclick = function(){
+            if(all_chapter_content_id[index+1] === undefined){
+                alert("这是最后一章了！")
+            }else{
+                location.href = next_url
+            }
+
+        }
+    }else{
+        last_img.onclick = function(){
+            location.href = last_url;
+        }
+        next_img.onclick = function(){
+            if(all_chapter_content_id[index+1] === undefined){
+                alert("这是最后一章了！")
+            }else{
+                location.href = next_url
+            }
+        }
+        console.log(all_chapter_content_id[index-1])
+    }
+</script>
+{% endblock %}

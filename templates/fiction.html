@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+    <div class="container" style="background: #fff;">
+
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin: 10px 0 20px 0">
+            <select id="novel_category" class="navbar-brand selectpicker" data-live-search="true" style="padding:2px 10px; font-size: 14px; height:30px;margin:6px 0; width:120px;">
+                    <option>选择分类</option>
+                {% for i in Classification %}
+                    <option id="{{ i.id }}" value="/?classification_id={{ i.id }}">
+                        {{ i.name }}&nbsp;
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <img id="load" src="/static/img/loading.gif" style="position:absolute; top:35%; left:50%; margin-left:-35px; display:none" />
+        </div>
+        <script type="text/javascript">
+
+            $("#novel_category").on("change",function(){
+                var current_category = $(this).find("option:selected").text();
+                $("#load").css("display","block");
+
+                $.ajax({
+
+                     type: "GET",
+                     url: $(this).val(),
+                     async : true,
+                     dataType:"html",
+
+                     success: function(data){
+                     $("#load").css("display","none")
+                     $("html").eq(0).html(data)
+                     var img = document.getElementsByTagName('img');
+                     for (var i = 0; i < img.length; i++) {img[i].onerror = function () { this.src='/static/img/alt.jpg';}}
+                     $("#novel_category").find("option:selected").text(current_category);
+                     $("#new_novel").html('<hr><a href="javascript:;" style="font-size: 15px;">'+current_category+'</a>');
+                     }
+                 });
+            })
+        </script>
+
+        <h1 class="text-center">
+            {% for i in Fiction_chapter %}
+                {% if forloop.first %}
+                    {{ i.fiction_name }} <br><br>
+                    <img style="width: 100px" src="{{ i.fiction_name.image }}" onerror="javascript:this.src='/static/img/alt.jpg';"><br>
+                {% endif %}
+            {% endfor %}
+        </h1>
+        <hr>
+
+        <div class="row">
+            {% for i in Fiction_chapter %}
+
+                <div class="col-md-4 col-sm-6 col-xs-12" style="margin: 8px 0">
+                    <a href="/chapter_content/?chapter_content_id={{ i.id }}">{{ i.chapter_name }}</a>
+                </div>
+
+            {% endfor %}
+        </div>
+    <hr>
+    <h4 style="margin:30px 10px 10px 10px; font-size:14px; color:#333; font-weight:blod">免责声明：</h4>
+        <ul style="font-size:11px;">
+            <li>《爽文书院》为非赢利性站点。</li>
+            <li>《本站所有文学作品》均由书友上传且不做任何商业用途，仅为喜爱阅读的书友提供一个分享与交流的平台。</li>
+            <li>如果小说章节内容涉嫌色情、暴力等违法内容，或者是侵犯了作者的合法权益，请联系我们删除!</li>
+        </ul>
+
+        <h4 style=" margin:20px 10px 100px 10px; font-size:12px; color:#333; font-weight:blod;">Copyright ©2018  <a href="#">爽文书院</a></h4>
+
+    </div>
+
+    <script type="text/javascript">
+
+
+    window.onload = function(){
+
+        function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+        }
+        var fiction_id = getQueryString("fiction_id");
+
+        if(fiction_id == null || fiction_id == ""){
+            fiction_id = 1;
+        }
+        var all = document.getElementsByTagName("a")
+
+        for(var i=0; i<all.length; i++){
+            var hrefs = all[i].href;
+            all[i].href = hrefs + "&fiction_id="+fiction_id;
+        }
+
+    }
+
+    </script>
+{% endblock %}

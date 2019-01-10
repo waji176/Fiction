@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table>
+
+    <tr>
+        <td>ip</td>
+        <td>port</td>
+        <td>update</td>
+    </tr>
+    <tr>
+        <td>192.168.1.1</td>
+        <td>6379</td>
+        <td><a href="#">更新</a></td>
+    </tr>
+    <tr>
+        <td>192.168.1.2</td>
+        <td>6379</td>
+        <td><a href="#">更新</a></td>
+    </tr>
+</table>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script>
+    $(function () {
+        $("a").click(function () {
+            var ip = $(this).parent().siblings("td")[0].innerText;
+            var port = $(this).parent().siblings("td")[1].innerText;
+            console.log("ip:", ip);
+            console.log("port:", port);
+        });
+    })
+</script>
+</body>
+</html>

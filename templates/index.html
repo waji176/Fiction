@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block body %}
+<style type="text/css">
+    *{
+        list-style: none
+    }
+</style>
+
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<div class="container"  style="background: #fff;">
+
+
+        {% for i in Fiction_list %}
+        <div class="col-md-4 col-sm-6 col-xs-12" style="margin: 15px 0px; line-height: 25px;  height: 150px">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><img src="{{ i.image }}" alt="爽文小说.jpg" width="100"></a>
+            </div>
+            <div class="col-md-9 col-sm-3 col-xs-9">
+                <ul style="font-size:16px;">
+                    <li><a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><b>{{ i.fiction_name }}</b></a></li>
+                    <li>{{ i.author }}</li>
+                    <li>{{ i.viewing_count }}</li>
+                    <li>{{ i.status }}</li>
+
+                    <li></li>
+                </ul>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin:20px 0 15px 0">
+        <p style="border-top: 1px solid #e7e7e7;border-bottom: 1px solid #e7e7e7;">
+            <a href="javascript:;" style="display: inline-block;padding: 10px 0; font-size: 16px; font-weight: bold;">小说排行</a>
+        </p>
+    </div>
+
+    {% for i in Ranking_list %}
+        <div class="col-md-4 col-sm-6 col-xs-12" style="margin: 15px 0px; line-height: 25px; height: 150px">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><img src="{{ i.image }}" alt="爽文小说.jpg" width="100"></a>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <ul style="font-size:16px;">
+                    <li><a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><b>{{ i.fiction_name }}</b></a></li>
+                    <li>{{ i.author }}</li>
+                    <li>{{ i.viewing_count }}</li>
+                    <li>{{ i.status }}</li>
+
+                    <li></li>
+                </ul>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin:25px 0 15px 0">
+        <p style="border-top: 1px solid #e7e7e7;border-bottom: 1px solid #e7e7e7;">
+            <a href="javascript:;" style="display: inline-block;padding: 10px 0; font-size: 16px; font-weight: bold;">小说推荐</a>
+        </p>
+    </div>
+
+    {% for i in Recommend_list %}
+        <div class="col-md-4 col-sm-6 col-xs-12" style="margin: 15px 0px; line-height: 25px;  height: 150px">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><img src="{{ i.image }}"  alt="爽文小说.jpg" width="100"></a>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <ul style="font-size:16px;">
+                    <li><a target="_blank" href="/fiction/?fiction_id={{ i.id }}"><b>{{ i.fiction_name }}</b></a></li>
+                    <li>{{ i.author }}</li>
+                    <li>{{ i.viewing_count }}</li>
+                    <li>{{ i.status }}</li>
+
+                    <li></li>
+                </ul>
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <hr>
+        <h4 style="margin:30px 10px 10px 10px; font-size:14px; color:#333; font-weight:blod">免责声明：</h4>
+        <ul style="font-size:11px;">
+            <li>《爽文书院》为非赢利性站点。</li>
+            <li>《本站所有文学作品》均由书友上传且不做任何商业用途，仅为喜爱阅读的书友提供一个分享与交流的平台。</li>
+            <li>如果小说章节内容涉嫌色情、暴力等违法内容，或者是侵犯了作者的合法权益，请联系我们删除!</li>
+        </ul>
+
+        <h4 style=" margin:20px 10px 100px 10px; font-size:12px; color:#333; font-weight:blod;">Copyright ©2018  <a href="#">爽文书院</a></h4>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $("#novel_category").on("change",function(){
+        var current_category = $(this).find("option:selected").text();
+        $("#load").css("display","block");
+
+        $.ajax({
+
+             type: "GET",
+             url: $(this).val(),
+             async : true,
+             dataType:"html",
+
+             success: function(data){
+             $("#load").css("display","none")
+             $("html").eq(0).html(data)
+             var img = document.getElementsByTagName('img');
+             for (var i = 0; i < img.length; i++) {img[i].onerror = function () { this.src='/static/img/alt.jpg';}}
+             $("#novel_category").find("option:selected").text(current_category);
+             $("#new_novel").html('<hr><a href="javascript:;" style="font-size: 15px;">'+current_category+'</a>');
+             }
+         });
+
+
+    })
+</script>
+{% endblock %}

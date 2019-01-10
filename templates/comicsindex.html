@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <div class="pagination ">
+      <span class="step-links">
+        {% if Hentai.has_previous %}
+            <a href="?p={{ Hentai.previous_page_number }}">上一页</a>
+        {% endif %}
+          <span class="current">
+            第 {{ Hentai.number }} 页，共 {{ Hentai.paginator.num_pages }} 页.
+          </span>
+          {% if Hentai.has_next %}
+              <a href="?p={{ Hentai.next_page_number }}">下一页</a>
+          {% endif %}
+      </span>
+    </div>
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr style="font-size:14px;">
+            <th>title</th>
+            <th>封面</th>
+        </tr>
+        {% for i in Hentai %}
+            <tr style="font-size:14px;">
+                <td><a target="_blank" href="/comics/?hentai_id={{ i.id }}">{{ i.title }}</a></td>
+                <td><a target="_blank" href="/comics/?hentai_id={{ i.id }}" href=""><img src="{{ i.cover_image }}" alt=""></a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+      <span class="step-links">
+        {% if Hentai.has_previous %}
+            <a href="?p={{ Hentai.previous_page_number }}">上一页</a>
+        {% endif %}
+          <span class="current">
+            第 {{ Hentai.number }} 页，共 {{ Hentai.paginator.num_pages }} 页.
+          </span>
+          {% if Hentai.has_next %}
+              <a href="?p={{ Hentai.next_page_number }}">下一页</a>
+          {% endif %}
+      </span>
+    </div>
+
+
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+
+{% endblock %}

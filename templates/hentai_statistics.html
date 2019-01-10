@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <h1>总大小：{{ all_gb }} GB</h1>
+    <h1>总数量：{{ all_count }}</h1>
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr>
+            <th>分类</th>
+            <th>大小GB</th>
+            <th>数量</th>
+            <th>数量百分比</th>
+
+        </tr>
+        {% for i in classification %}
+            <tr>
+                <td><a href="?classification={{ i.classification }}" target="_blank">{{ i.classification }}</a></td>
+                <td>{{ i.gb }} GB</td>
+                <td>{{ i.num }}</td>
+                <td>{{ i.percentage }} %</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1>总数量：{{ all_count }}</h1>
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr>
+            <th>语言</th>
+            <th>数量</th>
+            <th>百分比</th>
+        </tr>
+        {% for i in language %}
+            <tr>
+                <td><a href="#">{{ i.language }}</a></td>
+                <td>{{ i.num }}</td>
+                <td>{{ i.percentage }} %</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

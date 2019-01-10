@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <h1 class="text-center">
+        {% for i in Fiction_chapter %}
+            {% if forloop.first %}
+                {{ i.fiction_name }} <br><br>
+                <img style="width: 100px" src="{{ i.fiction_name.image }}" alt=""><br>
+
+            {% endif %}
+        {% endfor %}
+    </h1>
+
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr>
+
+            <th>章节名</th>
+            <th>是否是VIP章节</th>
+            <th>章节更新时间</th>
+        </tr>
+        {% for i in Fiction_chapter %}
+            <tr>
+                <td>
+                    <a target="_blank"
+                       href="/chapter_content/?chapter_content_id={{ i.id }}">{{ i.chapter_name }}</a>
+                </td>
+                <td class="{{ i.is_vip }}">{{ i.is_vip }}</td>
+                <td>{{ i.update_time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+<h4 style="margin:30px 10px 10px 10px; font-size:14px; color:#333; font-weight:blod">免责声明：</h4>
+    <ul style="font-size:11px;">
+        <li>《爽文书院》为非赢利性站点。</li>
+        <li>《本站所有文学作品》均由书友上传且不做任何商业用途，仅为喜爱阅读的书友提供一个分享与交流的平台。</li>
+        <li>如果小说章节内容涉嫌色情、暴力等违法内容，或者是侵犯了作者的合法权益，请联系我们删除!</li>
+    </ul>
+
+    <h4 style=" margin:20px 10px 10px 10px; font-size:12px; color:#333; font-weight:blod;">Copyright ©2018  <a href="#">爽文书院</a></h4>
+{% endblock %}

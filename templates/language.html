@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <h1>总数量：{{ all_count }}</h1>
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr>
+            <th>语言</th>
+            <th>数量</th>
+            <th>百分比</th>
+        </tr>
+
+        {% for i in language %}
+            <tr>
+                <td>{{ i.language }}</td>
+                <td>{{ i.num }}</td>
+                <td>{{ i.percentage }} %</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

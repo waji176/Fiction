@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <table class="table table-hover table-bordered table-striped table-condensed table-responsive" style="margin:10px;">
+        <tr style="font-size:14px;">
+            <th>作品名</th>
+            <th>作者</th>
+            <th>浏览数</th>
+            <th>小说状态</th>
+            <th>小说更新时间</th>
+            <th>小说封面图片</th>
+        </tr>
+        {% for i in Fiction_list %}
+            <tr style="font-size:14px;">
+                <td><a target="_blank" href="/fiction/?fiction_id={{ i.id }}">{{ i.fiction_name }}</a></td>
+                <td>{{ i.author }}</td>
+                <td>{{ i.viewing_count }}</td>
+                <td>{{ i.status }}</td>
+                <td>{{ i.update_time }}</td>
+                <td><a target="_blank" href="{{ i.image }}">{{ i.image }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h4 style="margin:30px 10px 10px 10px; font-size:14px; color:#333; font-weight:blod">免责声明：</h4>
+    <ul style="font-size:11px;">
+        <li>《爽文书院》为非赢利性站点。</li>
+        <li>《本站所有文学作品》均由书友上传且不做任何商业用途，仅为喜爱阅读的书友提供一个分享与交流的平台。</li>
+        <li>如果小说章节内容涉嫌色情、暴力等违法内容，或者是侵犯了作者的合法权益，请联系我们删除!</li>
+    </ul>
+
+    <h4 style=" margin:20px 10px 10px 10px; font-size:12px; color:#333; font-weight:blod;">Copyright ©2018  <a href="#">爽文书院</a></h4>
+
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $("#novel_category").on("change",function(){
+        var current_category = $(this).find("option:selected").text();
+        $("#load").css("display","block")
+        $.ajax({
+
+             type: "GET",
+             url: $(this).val(),
+             async : true,
+             dataType:"html",
+
+             success: function(data){
+             $("#load").css("display","none")
+             $("html").eq(0).html(data)
+             $("#novel_category").find("option:selected").text(current_category);
+
+             }
+         });
+    })
+</script>
+{% endblock %}

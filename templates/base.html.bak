@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--1.添加视口标签 快捷方式：meta:vp -->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--2.设置网页渲染模式  快捷方式：meta:compat  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--3.把bootstrap 核心样式（压缩版）引入-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <title>爽文书院</title>
+    <meta name="keywords" content="爽文书院" />
+    <meta name="description" content="爽文书院为你提供玄幻、武侠、言情、都市等类型的小说免费在线阅读，大家爱看的小说、刚刚更新的小说和小说排行榜一应具全，爽文书院致力于分享与交流，希望你喜欢并分享爽文书院给大家。" />
+
+    <!--6.针对于IE9 以下浏览器做兼容性处理 快捷方式：cc:ie -->
+    <!--[if lt IE9 ]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        {% block css %}{% endblock %}
+    </style>
+</head>
+<body>
+{% block title %}
+    <header class="navbar navbar-static-top bs-docs-nav navbar-default" id="top" style="padding:10px 20px;">
+        <h3 style="color:#369">爽文书院</h3>
+
+        <p style="margin:20px 0;font-size:14px;">给你全新的阅读体验~</p>
+
+        <div class="navbar-header">
+            <!--<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-navbar"-->
+                    <!--aria-controls="bs-navbar" aria-expanded="true">-->
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../" class="navbar-brand">小说分类</a>
+            <select id="novel_category" class="navbar-brand" style="padding:5px 10px; height:35px;margin:6px 0; width:350px;">
+                {% for i in Classification %}
+                    <option id="{{ i.id }}" value="/?classification_id={{ i.id }}">
+                        {{ i.name }}(来源:{{ i.source }})&nbsp;
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <nav id="bs-navbar" class="collapse navbar-collapse">
+            <!--<ul class="nav navbar-nav">-->
+
+                <!--{% for i in Classification %}-->
+                    <!--<li>-->
+                        <!--<a id="{{ i.id }}" href="/?classification_id={{ i.id }}">{{ i.name }}(来源:{{ i.source }})</a>&nbsp;-->
+                    <!--</li>-->
+                <!--{% endfor %}-->
+            <!--</ul>-->
+        </nav>
+    </header>
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+<img id="load" src="/static/img/loading.gif" style="position:absolute; top:35%; left:50%; margin-left:-35px; display:none" />
+<!--4.把jQuery 引入-->
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<!--5.把bootstrap 核心脚本文件（压缩版）引入-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        var Classification_id ={{ Classification_id|safe }};
+        $("#" + Classification_id).css("color", "red");
+        $("#" + Classification_id).css("background", "#4cae4c");
+    })
+</script>
+</body>
+</html>
